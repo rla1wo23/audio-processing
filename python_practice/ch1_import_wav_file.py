@@ -15,6 +15,13 @@ print(f"(If the X/FS result is twice the actual output length, it means that the
 plt.plot(x)
 plt.show()
 
-t= np.arange(x.size)/float(fs) #it generates time axis!
-print(t)
+t= np.arange(x.size)/float(fs) #it generates time axis t
+print("now, we can process with time axis t, not by sample")
+plt.plot(t,x)
+plt.show()
 
+print("if you want, only some part of the array, you can cut array like below this code")
+y=x[44100:44300]
+plt.plot(y)
+plt.show()
+print(f"max of the amplitude for interval y is {np.max(y)}")
