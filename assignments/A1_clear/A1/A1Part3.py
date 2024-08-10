@@ -1,3 +1,4 @@
+import numpy as np
 """
 A1-Part-3: Python array indexing
 
@@ -20,3 +21,6 @@ def hopSamples(x,M):
     """
     ## Your code here
     return x[0::M]
+#test codes:
+# x=np.arange(10)
+# print(hopSamples(x,2))

@@ -1,7 +1,9 @@
 import sys
 import os
+
 sys.path.append('../../software/models/')
 from utilFunctions import wavread
+
 
 """
 A1-Part-2: Basic operations with audio
@@ -25,3 +27,6 @@ def minMaxAudio(inputFile):
     ## Your code here
     (fs, x) = wavread(inputFile)
     return (min(x), max(x))
+#testing code
+# a,b=minMaxAudio("../../sounds/oboe-A4.wav")
+# print(a,b)

@@ -33,4 +33,6 @@ def readAudio(inputFile):
     ## Your code here
     (fs, x) = wavread(inputFile)
     y = x[50000:50010]
-    return y
+    return y    
+#test codes
+#print(readAudio("piano.wav"))
