@@ -12,6 +12,7 @@ kv = np.arange(-N/2,N/2) # index for k
 for k in kv:
   s=np.exp(1j*2*np.pi*k/N*nv)
   X=np.append(X,sum(x*np.conjugate(s)))
+
 y=np.array([])
 for n in nv:
   s=np.exp(1j*2*np.pi*n/N*kv)

@@ -6,7 +6,7 @@ k0=7
 X=np.array([])
 x=np.cos(2*np.pi*k0/N*np.arange(N)) #generate cos wave
 nv = np.arange(-N/2,N/2) # time indexes
-kv = np.arange(-N/2,N/2) # index for k
+kv = np.arange(-N/2,N/2) # index for k  
 
 for k in kv:
   s=np.exp(1j*2*np.pi*k/N*nv)
