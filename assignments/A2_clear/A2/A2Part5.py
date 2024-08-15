@@ -22,3 +22,11 @@ def genMagSpec(x):
                              (length N)
     """
     ## Your code here
+    N=len(x)
+    X=np.array([])
+    for k in range(N):
+        s=0
+        for n in range(N):
+            s+=x[n]*np.exp(1j*2*np.pi*k*n/N)
+        X=np.append(X,s)
+    return np.abs(X)

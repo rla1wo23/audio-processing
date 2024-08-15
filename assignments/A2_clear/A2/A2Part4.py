@@ -33,3 +33,10 @@ def IDFT(X):
         x (numpy array) = The N point IDFT of the frequency spectrum X
     """
     ## Your code here
+    N = len(X)
+    x = np.zeros(N, dtype=complex)  # 복소수 배열로 초기화
+    for k in range(N):
+        s = np.conjugate(np.exp(-1j * 2 * np.pi * k / N * np.arange(N)))
+        x[k] = sum(X * s) / N
+
+    return x
