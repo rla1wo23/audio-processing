@@ -25,34 +25,36 @@ fftbuffer[N-hM2:] = x1[:hM2]  # Copy the first half of x1 to the second half of 
 # FFT
 X = fft(fftbuffer)
 mX = abs(X)  # Magnitude
-pX = np.angle(X)  # Phase
+mX_db = 20 * np.log10(mX + 1e-10)  # Magnitude in dB, small constant added to avoid log(0)
+
+pX = np.unwrap(np.angle(X))  # unwrapped Phase
 
 # Plotting
-plt.figure(figsize=(12, 12))
+plt.figure(figsize=(10, 8))  # Adjusted figure size
 
 # Plot original signal x1
-plt.subplot(4, 1, 1)
+plt.subplot(2, 2, 1)
 plt.plot(x1)
 plt.title('Original Signal (x1)')
 plt.xlabel('Sample Index')
 plt.ylabel('Amplitude')
 
 # Plot FFT buffer
-plt.subplot(4, 1, 2)
+plt.subplot(2, 2, 2)
 plt.plot(fftbuffer)
 plt.title('FFT Buffer')
 plt.xlabel('Sample Index')
 plt.ylabel('Amplitude')
 
-# Plot magnitude spectrum
-plt.subplot(4, 1, 3)
-plt.plot(mX)
-plt.title('Magnitude Spectrum')
+# Plot magnitude spectrum in dB
+plt.subplot(2, 2, 3)
+plt.plot(mX_db)
+plt.title('Magnitude Spectrum (dB)')
 plt.xlabel('Frequency Bin')
-plt.ylabel('Magnitude')
+plt.ylabel('Magnitude (dB)')
 
 # Plot phase spectrum
-plt.subplot(4, 1, 4)
+plt.subplot(2, 2, 4)
 plt.plot(pX)
 plt.title('Phase Spectrum')
 plt.xlabel('Frequency Bin')
