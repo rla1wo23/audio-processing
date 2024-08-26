@@ -59,7 +59,7 @@ def testRealEven(x):
     X = fft(dftbuffer)
     hM1 = int(math.floor((M+1)/2))
     hM2 = int(math.floor(M/2))
-    isReal = np.real(X[1:hM1]) == np.real(X[M-1:hM2:-1])
-    isImag = np.imag(X) < 1.0e-6
+    isReal = np.real(X[1:hM1]) == np.real(X[M-1:hM2:-1]) #even signal은 전반부랑, 후반부가 대칭적이다.
+    isImag = np.imag(X) < 1.0e-6  #허수부는 0에 가깝다.
     isRealEven = sum(isReal == False) + sum(isImag == False) == 0
     return bool(isRealEven), dftbuffer, X
