@@ -63,3 +63,30 @@ def suppressFreqDFTmodel(x, fs, N):
     outputScaleFactor = sum(w)
     
     ## Your code here
+    mX,pX=dftAnal(x,w,N)    
+    mXfilt = mX.copy()
+    bin_freq = fs / N
+    bin_70Hz = int(np.ceil(70 / bin_freq))
+    
+    mXfilt[:bin_70Hz + 1] = -120
+    
+    y = dftSynth(mX, pX, M) * outputScaleFactor
+    yfilt = dftSynth(mXfilt, pX, M) * outputScaleFactor
+    return y, yfilt
+"""
+fs = 1000
+N = 1024
+x = np.sin(2 * np.pi * 40 * np.arange(0, 1.0, 1.0/fs)) + \
+    np.sin(2 * np.pi * 100 * np.arange(0, 1.0, 1.0/fs)) + \
+    np.sin(2 * np.pi * 200 * np.arange(0, 1.0, 1.0/fs)) + \
+    np.sin(2 * np.pi * 1000 * np.arange(0, 1.0, 1.0/fs))
+
+y, yfilt = suppressFreqDFTmodel(x, fs, N)
+
+
+plt.figure()
+plt.plot(y, label='Original')
+plt.plot(yfilt, label='Filtered')
+plt.legend()
+plt.show()
+"""

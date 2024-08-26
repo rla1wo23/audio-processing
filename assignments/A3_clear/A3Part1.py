@@ -1,6 +1,6 @@
 ﻿from scipy.fftpack import fft
 import numpy as np
-from fractions import gcd
+from math import gcd
 
 """
 A3-Part-1: Minimize energy spread in DFT of sinusoids
@@ -61,3 +61,8 @@ def minimizeEnergySpreadDFT(x, fs, f1, f2):
                            mX is (M/2)+1 samples long (M is to be computed)
     """
     ## Your code here
+    p1 = int(fs / f1)
+    p2 = int(fs / f2)
+    M = int(p1 * p2 / gcd(p1, p2))
+    X = np.fft.fft(x[:M])
+    return 20 * np.log10(np.abs(X[:int(M/2) + 1]))
